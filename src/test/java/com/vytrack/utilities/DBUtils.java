@@ -24,7 +24,7 @@ public class DBUtils {
             e.printStackTrace();
         }
     }
-    public static void destroy() {
+    public static void closeConnection() {
         try {
             if (resultSet != null) {
                 resultSet.close();

@@ -5,41 +5,37 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Default page number",
+  "name": "Contacts test with email",
   "description": "",
   "keyword": "Scenario",
   "tags": [
     {
-      "name": "@wip"
+      "name": "@db"
+    },
+    {
+      "name": "@Database"
     }
   ]
 });
 formatter.before({
   "status": "passed"
 });
-formatter.step({
-  "name": "the user is on the login page",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_user_is_on_the_login_page()"
-});
-formatter.result({
+formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user enters the driver information",
-  "keyword": "And "
+  "name": "the user logged in as \"sales manager\"",
+  "keyword": "Given "
 });
 formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_user_enters_the_driver_information()"
+  "location": "com.vytrack.step_definitions.ContactsStepDef.the_user_logged_in_as(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
   "name": "the user navigates to \"Customers\" \"Contacts\"",
-  "keyword": "When "
+  "keyword": "And "
 });
 formatter.match({
   "location": "com.vytrack.step_definitions.NavigationMenuStepDefs.theUserNavigatesTo(java.lang.String,java.lang.String)"
@@ -48,75 +44,28 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "default page number should be 1",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.vytrack.step_definitions.NavigationMenuStepDefs.default_page_number_should_be(java.lang.Integer)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.uri("file:src/test/resources/features/LoginWithParameters.feature");
-formatter.feature({
-  "name": "Login as different users",
-  "description": "",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "login as a driver user",
-  "description": "",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "name": "@wip"
-    }
-  ]
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user is on the login page",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_user_is_on_the_login_page()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the user logs in using \"User10\" and \"UserUser123\"",
+  "name": "the user clicks the \"mbrackstone9@example.com\" from contacts",
   "keyword": "When "
 });
 formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_user_logs_in_using_and(java.lang.String,java.lang.String)"
+  "location": "com.vytrack.step_definitions.ContactsStepDef.the_user_clicks_the_from_contacts(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user should be able to login",
+  "name": "information should ben same with database",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_user_should_be_able_to_login()"
+  "location": "com.vytrack.step_definitions.ContactsStepDef.information_should_ben_same_with_database()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.NullPointerException\r\n\tat com.vytrack.utilities.DBUtils.executeQuery(DBUtils.java:167)\r\n\tat com.vytrack.utilities.DBUtils.getQueryResultMap(DBUtils.java:126)\r\n\tat com.vytrack.utilities.DBUtils.getRowMap(DBUtils.java:70)\r\n\tat com.vytrack.step_definitions.ContactsStepDef.information_should_ben_same_with_database(ContactsStepDef.java:99)\r\n\tat ✽.information should ben same with database(file:///C:/Users/Mehme/IdeaProjects/EU7CucumberSelenium/src/test/resources/features/Contacs.feature:70)\r\n",
+  "status": "failed"
 });
-formatter.step({
-  "name": "the title contains \"Dashboard\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.vytrack.step_definitions.LoginStepDefs.the_title_contains(java.lang.String)"
-});
-formatter.result({
+formatter.embedding("image/png", "embedded0.png", "screenshot");
+formatter.after({
   "status": "passed"
 });
 formatter.after({

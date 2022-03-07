@@ -1,5 +1,5 @@
 Feature: Contacts page
-@wip
+
   Scenario:Default page number
     Given the user is on the login page
     And the user enters the driver information
@@ -61,3 +61,10 @@ Feature: Contacts page
       | user           | firstName | lastName |
       | user10         | John      | Doe      |
       | storemanager85 | Stephan   | Haley    |
+
+    @db @Database
+    Scenario: Contacts test with email
+      Given the user logged in as "sales manager"
+      And the user navigates to "Customers" "Contacts"
+      When the user clicks the "mbrackstone9@example.com" from contacts
+      Then information should ben same with database

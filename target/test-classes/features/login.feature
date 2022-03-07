@@ -17,6 +17,6 @@ Feature: Users should be able to login
     When the user enters the store manager information
     Then the user should be able to login
 
-  @Database
+  @Data
   Scenario:
     Then Database Check

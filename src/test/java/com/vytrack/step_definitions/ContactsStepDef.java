@@ -1,10 +1,9 @@
 package com.vytrack.step_definitions;
 
-import com.vytrack.pages.BasePage;
-import com.vytrack.pages.DashboardPage;
-import com.vytrack.pages.LoginPage;
+import com.vytrack.pages.*;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.DBUtils;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -71,4 +70,50 @@ public class ContactsStepDef {
         System.out.println("expectedName = " + expectedName);
         System.out.println("actualName = " + actualName);
     }
+
+    @When("the user clicks the {string} from contacts")
+    public void the_user_clicks_the_from_contacts(String email) {
+        BrowserUtils.waitFor(10);
+        ContactsPage contactsPage = new ContactsPage();
+        contactsPage.getContactEmail(email).click();
+    }
+
+    @Then("information should ben same with database")
+    public void information_should_ben_same_with_database() {
+        BrowserUtils.waitFor(5);
+        //get info from ui
+        ContactInfoPage contactInfoPage = new ContactInfoPage();
+        String actualFullName = contactInfoPage.contactFullName.getText();
+        String actualEmail = contactInfoPage.email.getText();
+        String actualPhone = contactInfoPage.phone.getText();
+
+        //database Connection
+        DBUtils.createConnection(); //Normally I should put in hooks
+
+        //we are getting only one row of result
+        String query = "select concat (first_name, ' ' , last_name) as \"full_name\" , e.email , phone\n" +
+                "from orocrm_contact c  join orocrm_contact_email e\n" +
+                "on c.id = e.owner_id join orocrm_contact_phone p\n" +
+                "on e.owner_id = p.owner_id\n" +
+                "where e.email='mbrackstone9@example.com'";
+        Map<String,Object> rowMap = DBUtils.getRowMap(query);
+        String expectedFullName = (String) rowMap.get("full_name"); //casting
+        String expectedEmail = (String) rowMap.get("email");
+        String expectedPhone = (String) rowMap.get("phone");
+        System.out.println(expectedFullName + expectedEmail + expectedPhone);
+        DBUtils.closeConnection(); //Normally I should put in hooks
+
+        //assertion
+        Assert.assertEquals(expectedFullName,actualFullName);
+        Assert.assertEquals(expectedEmail,actualEmail);
+        Assert.assertEquals(expectedPhone,actualPhone);
+
+
+
+
+    }
+
+
+
+
 }
