@@ -64,10 +64,10 @@ formatter.result({
   "error_message": "java.lang.NullPointerException\r\n\tat com.vytrack.utilities.DBUtils.executeQuery(DBUtils.java:167)\r\n\tat com.vytrack.utilities.DBUtils.getQueryResultMap(DBUtils.java:126)\r\n\tat com.vytrack.utilities.DBUtils.getRowMap(DBUtils.java:70)\r\n\tat com.vytrack.step_definitions.ContactsStepDef.information_should_ben_same_with_database(ContactsStepDef.java:99)\r\n\tat ✽.information should ben same with database(file:///C:/Users/Mehme/IdeaProjects/EU7CucumberSelenium/src/test/resources/features/Contacs.feature:70)\r\n",
   "status": "failed"
 });
-formatter.embedding("image/png", "embedded0.png", "screenshot");
 formatter.after({
   "status": "passed"
 });
+formatter.embedding("image/png", "embedded0.png", "screenshot");
 formatter.after({
   "status": "passed"
 });
